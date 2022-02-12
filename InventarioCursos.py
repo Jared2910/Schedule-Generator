@@ -1,4 +1,5 @@
-from Curso import Curso
+from Unico import Unico
+from Doble import Doble
 
 class InventarioCursos:
     def __init__(self):
@@ -17,6 +18,10 @@ class InventarioCursos:
 
 
 if __name__ == '__main__':
+
+    a = Unico()
+
+    """
     prueba = InventarioCursos()
 
     prueba.agregarCurso("Programacion 4","41737","EIF209","Lunes","10:00","11:40","Jueves","10:00","11:40")
@@ -25,6 +30,7 @@ if __name__ == '__main__':
     prueba.agregarCurso("Ingles 4","41095","LIX400","Miercoles","13:00","16:40","Viernes","13:00","16:00")
 
     prueba.toString()
+    """
 
 
 

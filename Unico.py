@@ -1,10 +1,10 @@
 from Curso import Curso
-
 import datetime
 from FormatoHoras import separadorHoraMinuto
 
 
 class Unico(Curso):
+    horario = dict()
     def __init__(self, nombre, nrc, codigo, dia, entrada, salida):
         self.nombre = nombre
         self.nrc = nrc
@@ -28,19 +28,17 @@ class Unico(Curso):
     def getHorario(self):
         return self.horario
 
-    def __mostrarHorario(self):
-        horario = self.getHorario()
-        for key in horario:
-            print(key, ':', horario[key][0], '-', horario[key][1])
+    def mostrarHorario(self):
+        super().mostrarHorario()
 
     def toString(self):
-        print(f"Curso: {self.getNombre()}")
-        print(f"NRC: {self.getNrc()}")
-        print(f"Codigo: {self.getCodigo()}")
-        print(f"---Hora del curso---")
-        self.__mostrarHorario()
+        super().toString()
 
-if __name__ == '__main__':
-	a = Unico("Ingenieria en sistemas 1","41744","EIF210","Martes","13:00","16:40")
+
+if __name__ == "__main__":
+    a = Unico("Ingenieria en sistemas 1", "41744","EIF210", "Martes", "13:00", "16:40")
+    a.toString()
+
+
 
 	
