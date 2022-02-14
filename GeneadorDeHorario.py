@@ -1,3 +1,4 @@
+import datetime
 from InventarioCursos import InventarioCursos
 import itertools
 
@@ -40,6 +41,57 @@ class GeneradorDeHorario:
 
         return resultado
 
+    def simplificar(self,horarios):
+        lista = []
+        for i in horarios:
+            temp = []
+            for j in i:
+                temp.append(j[0])
+            lista.append(temp)
+        return lista
+
+    def buscarChoqueDeHorario(self,horario,lista):
+        margen = datetime.timedelta(minutes=20)
+        for i in lista:
+            if not(i[0]<horario[0] and i[1]<horario[0] or i[0]-horario[1]>= margen):
+                return False
+        return True
+        
+
+
+    def verificarHora(self,cursos):
+        verified = {'Lunes':[],'Martes':[],'Miercoles':[],'Jueves':[],'Viernes':[],'Sabado':[],'Domingo':[]}
+        for curso in cursos:
+            horario = curso.getHorario()
+            for key in horario:
+                if verified[key] == []:
+                    verified[key].append(horario[key])
+                elif self.buscarChoqueDeHorario(horario[key],verified[key]):
+                    verified[key].append(horario[key])
+                else:
+                    return False
+        return True
+                    
+        
+    def filtrarHorario(self,listaHorarios):
+        lista = []
+        for i in listaHorarios:
+            if self.verificarHora(i):
+                lista.append(i)
+        return lista
+
+    def imprimirHorarios(self,horarios):
+        num = 1
+        for i in horarios:
+            print(f'Horario || {num} ||\n')
+            for j in i:
+                j.toString()
+            print('\n---------------------------------------------------------\n')
+            num+=1
+
+
+                
+
 if __name__ == "__main__":
     inventario = InventarioCursos()
     inventario.agregarCurso("Programacion 4","41737","EIF209","Lunes","10:00","11:40","Jueves","10:00","11:40")
@@ -57,8 +109,15 @@ if __name__ == "__main__":
 
 
     generador = GeneradorDeHorario(inventario)
-    
+
     result = generador.BuscarCombinaciones()
-    print(result)
+
+    simplificada = generador.simplificar(result)
+
+    final = generador.filtrarHorario(simplificada)
+
+    generador.imprimirHorarios(final)
+    
+    
         
 
