@@ -88,3 +88,18 @@ class GeneradorDeHorario:
                 j.toString()
             print('---------------------------------------------------------')
             num+=1
+
+    def exportar_txt(self,horarios):
+        num = 1
+        file = open('Horarios.txt','w')
+        for i in horarios:
+            file.write(f'Horario || {num} ||\n')
+            for j in i:
+                file.write(f"\nCurso: {j.getNombre()}\n")
+                file.write(f"NRC: {j.getNrc()}\n")
+                file.write(f"Codigo: {j.getCodigo()}\n")
+                file.write(f"Profesor(a): {j.getProfesor()}\n")
+                file.write(j.mostrarHorario_String())
+            file.write("\n|----|----|----|----|----|----|----|----|----|----|----|----|----|----|\n\n")
+            num += 1
+

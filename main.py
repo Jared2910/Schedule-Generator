@@ -30,4 +30,6 @@ if __name__ == '__main__':
 
     final = generador.filtrarHorario(simplificada)
 
-    generador.imprimirHorarios(final)
+    generador.exportar_txt(final)
+
+    #generador.imprimirHorarios(final)

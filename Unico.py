@@ -6,10 +6,7 @@ from FormatoHoras import separadorHoraMinuto
 class Unico(Curso):
     
     def __init__(self, nombre, nrc, codigo,profesor, dia, entrada, salida):
-        self.nombre = nombre
-        self.nrc = nrc
-        self.codigo = codigo
-        self.profesor =profesor
+        Curso.__init__(self,nombre,nrc,codigo,profesor)
 
         horaE1, minutoE1 = separadorHoraMinuto(entrada)
         horaS1, minutoS1 = separadorHoraMinuto(salida)
