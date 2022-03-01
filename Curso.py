@@ -6,9 +6,9 @@ class Curso(ABC):
         print(f"Curso: {self.getNombre()}")
         print(f"NRC: {self.getNrc()}")
         print(f"Codigo: {self.getCodigo()}")
+        print(f"Profesor(a): {self.getProfesor()}")
         print(f"---Hora del curso---")
         self.mostrarHorario()
-        print()
 
     @abstractmethod
     def mostrarHorario(self):
@@ -22,6 +22,8 @@ class Curso(ABC):
         return self.nrc
     def getCodigo(self):
         return self.codigo
+    def getProfesor(self):
+        return self.profesor
     def getHorario(self):
         return self.horario
 

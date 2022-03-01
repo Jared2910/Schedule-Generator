@@ -9,9 +9,9 @@ class InventarioCursos:
         return self.lista
 
     def agregarCurso(self,*args):
-        if len(args)==6:
+        if len(args)==7:
             curso = Unico(*args)
-        elif len(args)==9:
+        elif len(args)==10:
             curso = Doble(*args)
         self.lista.append(curso)
 

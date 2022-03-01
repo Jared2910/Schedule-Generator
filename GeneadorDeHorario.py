@@ -86,5 +86,5 @@ class GeneradorDeHorario:
             print(f'Horario || {num} ||\n')
             for j in i:
                 j.toString()
-            print('\n---------------------------------------------------------\n')
+            print('---------------------------------------------------------')
             num+=1
